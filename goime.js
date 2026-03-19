@@ -63,8 +63,11 @@ async function init() {
 		height: cheight,
 		background: 0xAAAAAA,
 		antialias: true,
+		resolution: window.devicePixelRatio,
 	});
 	document.body.appendChild(app.canvas);
+	app.canvas.style.height = cheight + 'px';
+	app.canvas.style.width = cwidth + 'px';
 	window.addEventListener('keydown', (event) => {
 		_keysDown[event.keyCode || event.charCode] = true;
 	});
@@ -125,7 +128,6 @@ async function preload() {
 
 	app.stage.getChildByLabel('loadingText').destroy();
 	setup();
-	app.ticker.add((time) => {draw()});
 }
 
 function loadMap() {
@@ -152,6 +154,7 @@ function loadMap() {
 
 function setup() {
 	addMapVisuals();
+	app.ticker.add((time) => {draw()});
 }
 
 let _root = {};
