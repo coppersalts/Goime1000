@@ -1452,7 +1452,8 @@ function draw() {
 				flag.context = textures.flag2[_frameCount % textures.flag.length];
 				blockMovieAt(x*25, y*25).getChildByLabel('checker').context = textures.checker[_frameCount % textures.flag.length];
 				if (flag.dataFrame >= 2 && flag.dataFrame < finishFlagColors.length - 1) {
-					setFlagColor(flag.parent, 1, flag.dataFrame + 1); // FIXME: This skips the first frame of the finish animation.
+					setFlagColor(flag.parent, 1, flag.dataFrame);
+					flag.dataFrame += 1;
 				}
 			}
 		}
